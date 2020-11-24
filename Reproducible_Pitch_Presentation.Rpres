@@ -1,0 +1,55 @@
+Reproducible Pitch Presentation
+========================================================
+author: Archana Datta
+date: 24 November 2020
+
+About the App
+========================================================
+
+This app is designed to see the performance of different cars in Miles per Gallon vs Horse Power using the specifications input by the user.
+
+By changing specs like number of cylinders, displacement and transmission type, the performance of the cars in terms of miles per gallon and horse power can be compared.
+
+The app is available on the following link:
+https://archanam2008.shinyapps.io/shinyappproject/
+
+The source for the app is available on GitHub at the following link:
+https://github.com/greycells2008/ShinyAppProject
+
+Data and Input
+========================================================
+
+The app uses the data from the 1974 Motor Trend car Road Tests and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles.
+
+The user can select one of three types of engines(4 cylinder/ 6 cylinder/ 8 cylinder). The displacement range can be selected between 70 - 500 cu. in.
+Furthermore, the transmission mechanism (automatic vs manual) can also be selected.
+
+Given the input, the user will be able to see a real-time scatter plot of different models of cars plotted for their respective miles per gallon and horse power. The cars will be shown differentiated according their number of forward gears.
+
+App Interface
+========================================================
+
+The unfiltered data for the app gives the following plot:
+
+```{r message=FALSE,echo = FALSE,warning=FALSE,fig.width=8,fig.height=6}
+
+library(ggplot2)
+library(ggrepel)
+
+mtcars$gear<-as.factor(mtcars$gear)
+
+# Draw the scatter plot based on user's input
+        
+ggplot(mtcars,aes(x=mtcars$hp,y=mtcars$mpg,color=mtcars$gear))+
+  geom_point(size=4)+
+               labs(title="Car Performance", x="Horse Power", y="Miles Per Gallon",colour="Gears")+
+  geom_smooth(method="lm")+geom_text_repel(label=rownames(mtcars))+ggsave(filename = "PPTPlot.png",width = 20,height = 20)
+
+   
+```
+
+App Interface
+========================================================
+Following is a sample of the app interface:
+
+![App interface](Reproducible_Pitch_Presentation-figure/ShinyAppProject.png)
