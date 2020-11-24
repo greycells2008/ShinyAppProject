@@ -24,7 +24,7 @@ shinyUI(fluidPage(
                         min = 70,
                         max = 500,
                         value = c(70,500)),
-            switchInput("transmission",value = TRUE)
+            switchInput("transmission","Transmission",value = TRUE)
         ),
 
         # Show a plot of the generated distribution

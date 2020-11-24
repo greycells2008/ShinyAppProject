@@ -5,6 +5,7 @@
 
 library(shiny)
 library(ggplot2)
+library(ggrepel)
 data(mtcars)
 
 # Define server logic required to draw a scatter plot between mpg and hp based on user's selections
@@ -26,9 +27,8 @@ shinyServer(function(input, output) {
         # Draw the scatter plot based on user's input
         
         ggplot(cars,aes(x=cars$hp,y=cars$mpg,color=cars$gear))+geom_point(size=4)+
-          labs(title="Car Performance", x="Horse Power", y="Miles Per Gallon"
-               ,colour="Gears")+geom_smooth(method="lm")
-        
+               labs(title="Car Performance", x="Horse Power", y="Miles Per Gallon"
+                              ,colour="Gears")+geom_smooth(method="lm")+geom_text_repel(label=rownames(cars))
 
     })
 
