@@ -26,7 +26,7 @@ shinyServer(function(input, output) {
         
         ggplot(cars,aes(x=cars$hp,y=cars$mpg,color=cars$gear))+geom_point(size=4)+
           labs(title="Car Performance", x="Horse Power", y="Miles Per Gallon"
-               ,colour="Gears")
+               ,colour="Gears")+geom_smooth(method="lm")
         
 
     })
