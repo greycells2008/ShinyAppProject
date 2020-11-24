@@ -5,6 +5,7 @@
 
 library(shiny)
 library(ggplot2)
+data(mtcars)
 
 # Define server logic required to draw a scatter plot between mpg and hp based on user's selections
 shinyServer(function(input, output) {
